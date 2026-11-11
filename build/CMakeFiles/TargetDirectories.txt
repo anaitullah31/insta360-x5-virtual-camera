@@ -1,0 +1,3 @@
+C:/Users/NB1007/Downloads/Insta Project/Insta360_X5_Windows_Control_Project/build/CMakeFiles/X5ControlCenter.dir
+C:/Users/NB1007/Downloads/Insta Project/Insta360_X5_Windows_Control_Project/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/NB1007/Downloads/Insta Project/Insta360_X5_Windows_Control_Project/build/CMakeFiles/ZERO_CHECK.dir
