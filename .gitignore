@@ -1,0 +1,28 @@
+
+# Generated build files
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.obj
+*.pdb
+*.exe
+*.dll
+
+# Third-party SDKs
+CameraSDK-*/
+MediaSDK/
+
+# Qt Creator
+*.user
+*.user.*
+.qt_clangd/
+
+# Secrets and temporary files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.log
+*.tmp

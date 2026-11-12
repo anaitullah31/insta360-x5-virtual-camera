@@ -92,7 +92,7 @@ static QImage perspectiveView(const QImage& panorama, double yaw,
     if (panorama.isNull()) return {};
     const QImage src = panorama.format() == QImage::Format_RGBA8888
         ? panorama : panorama.convertToFormat(QImage::Format_RGBA8888);
-    constexpr int outW = 640, outH = 360;
+    constexpr int outW = 960, outH = 540;
     QImage out(outW, outH, QImage::Format_RGBA8888);
     const double pi = 3.14159265358979323846;
     const double scale = std::tan(horizontalFov * pi / 360.0);
@@ -174,7 +174,7 @@ class X5Window : public QMainWindow {
             ? perspectiveView(lastPanorama_, videoLabel_->yaw, videoLabel_->pitch, videoLabel_->fov)
             : lastPanorama_;
         videoLabel_->setPixmap(QPixmap::fromImage(image).scaled(
-            videoLabel_->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
+            videoLabel_->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
     bool previewing_ = false;
 
@@ -306,7 +306,7 @@ public:
                 stitcher_->SetCameraInfo(info);
                 stitcher_->SetStitchType(ins::STITCH_TYPE::DYNAMICSTITCH);
                 stitcher_->EnableFlowState(true);
-                stitcher_->SetOutputSize(960, 480);
+                stitcher_->SetOutputSize(1920, 960);
                 frameBuffer_ = std::make_shared<StitchedFrameBuffer>();
                 auto buffer = frameBuffer_;
                 stitcher_->SetStitchRealTimeDataCallback(
@@ -361,7 +361,7 @@ public:
             previewStatus_->setText(QString("Live stitched panorama: %1 frames received")
                                     .arg(frameBuffer_->frames.load()));
         });
-        timer->start(100);
+        timer->start(33);
         updateButtons();
     }
     ~X5Window() override { if (camera_) { stopPreview(); camera_->Close(); } }
